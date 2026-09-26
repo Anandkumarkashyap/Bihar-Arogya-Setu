@@ -264,13 +264,15 @@ if search_clicked or "last_results" in st.session_state:
             
             import requests
             route_coords = [[patient_lon, patient_lat], [top_hospital["lon"], top_hospital["lat"]]]
+            route_steps = []
             try:
-                osrm_url = f"http://router.project-osrm.org/route/v1/driving/{patient_lon},{patient_lat};{top_hospital['lon']},{top_hospital['lat']}?overview=full&geometries=geojson"
+                osrm_url = f"http://router.project-osrm.org/route/v1/driving/{patient_lon},{patient_lat};{top_hospital['lon']},{top_hospital['lat']}?overview=full&geometries=geojson&steps=true"
                 response = requests.get(osrm_url, timeout=5)
                 if response.status_code == 200:
                     data = response.json()
                     if data.get("code") == "Ok":
                         route_coords = data["routes"][0]["geometry"]["coordinates"]
+                        route_steps = data["routes"][0]["legs"][0].get("steps", [])
             except Exception:
                 pass
 
@@ -338,6 +340,20 @@ if search_clicked or "last_results" in st.session_state:
             f"{trend_suffix} "
             f"Phone: {top['phone'] if pd.notna(top['phone']) else 'Not listed'}"
         )
+        
+        if 'route_steps' in locals() and route_steps:
+            with st.expander("🚗 Turn-by-Turn Navigation Instructions"):
+                for i, step in enumerate(route_steps):
+                    maneuver = step.get("maneuver", {})
+                    instruction = maneuver.get("type", "").replace("-", " ")
+                    if "modifier" in maneuver:
+                        instruction += " " + maneuver["modifier"].replace("-", " ")
+                    name = step.get("name", "")
+                    if name:
+                        instruction += f" onto **{name}**"
+                    distance = step.get("distance", 0)
+                    if instruction:
+                        st.markdown(f"{i+1}. {instruction.capitalize()} (drive {distance:.0f}m)")
 else:
     st.info("Set the patient's location and needs in the sidebar, then click **Find Hospitals**.")
 
