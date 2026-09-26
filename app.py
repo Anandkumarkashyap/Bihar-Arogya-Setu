@@ -100,20 +100,31 @@ st.sidebar.divider()
 with st.sidebar.expander("⚙️ Staff Access"):
     if "staff_unlocked" not in st.session_state:
         st.session_state["staff_unlocked"] = False
+        st.session_state["staff_hospital_id"] = None
+        st.session_state["staff_hospital_name"] = None
 
     if not st.session_state["staff_unlocked"]:
+        hospitals_df = load_all_hospitals()
+        selected_hospital_name = st.selectbox(
+            "Select your hospital", hospitals_df["name"].tolist(), key="login_hospital_select"
+        )
         entered_code = st.text_input("Access code", type="password", key="staff_code_input")
         if st.button("Unlock", key="staff_unlock_btn"):
             correct_code = st.secrets.get("staff_access_code", None)
             if correct_code is not None and entered_code == correct_code:
                 st.session_state["staff_unlocked"] = True
+                st.session_state["staff_hospital_name"] = selected_hospital_name
+                row = hospitals_df[hospitals_df["name"] == selected_hospital_name].iloc[0]
+                st.session_state["staff_hospital_id"] = int(row["hospital_id"])
                 st.rerun()
             else:
                 st.error("Incorrect code.")
     else:
-        st.success("Staff mode unlocked for this session.")
+        st.success(f"Unlocked for: {st.session_state['staff_hospital_name']}")
         if st.button("Lock again", key="staff_lock_btn"):
             st.session_state["staff_unlocked"] = False
+            st.session_state["staff_hospital_id"] = None
+            st.session_state["staff_hospital_name"] = None
             st.rerun()
 
 # ---------------------------------------------------------------------------
@@ -127,11 +138,11 @@ if st.session_state.get("staff_unlocked", False):
     )
 
     hospitals_df = load_all_hospitals()
-    staff_hospital_name = st.selectbox(
-        "Select your hospital", hospitals_df["name"].tolist(), key="staff_hospital_select"
-    )
-    staff_hospital_row = hospitals_df[hospitals_df["name"] == staff_hospital_name].iloc[0]
-    staff_hospital_id = int(staff_hospital_row["hospital_id"])
+    staff_hospital_id = st.session_state["staff_hospital_id"]
+    staff_hospital_name = st.session_state["staff_hospital_name"]
+    staff_hospital_row = hospitals_df[hospitals_df["hospital_id"] == staff_hospital_id].iloc[0]
+    
+    st.subheader(f"Updating: {staff_hospital_name}")
 
     current = load_current_availability(staff_hospital_id)
 
