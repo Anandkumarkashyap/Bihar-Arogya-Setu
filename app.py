@@ -59,15 +59,25 @@ else:
     if custom_address:
         try:
             from geopy.geocoders import Nominatim
-            geolocator = Nominatim(user_agent="bihar_arogya_setu")
-            location = geolocator.geocode(custom_address)
+            geolocator = Nominatim(user_agent="bihar_arogya_setu", timeout=10)
+            
+            search_query = custom_address
+            if "bihar" not in custom_address.lower():
+                search_query = f"{custom_address}, Bihar, India"
+                
+            location = geolocator.geocode(search_query)
+            
+            # Fallback if the strict 'Bihar, India' addition fails
+            if not location:
+                location = geolocator.geocode(custom_address)
+                
             if location:
                 default_lat, default_lon = location.latitude, location.longitude
-                st.sidebar.success("Found location!")
+                st.sidebar.success(f"Found: {location.address.split(',')[0]}")
             else:
-                st.sidebar.error("Location not found. Please try again.")
+                st.sidebar.error("Location not found. Try adding a nearby town or district name.")
         except Exception:
-            st.sidebar.error("Error finding location.")
+            st.sidebar.error("Map service busy. Try adjusting Latitude/Longitude manually.")
     
     patient_lat = st.sidebar.number_input("Latitude", value=default_lat, format="%.6f")
     patient_lon = st.sidebar.number_input("Longitude", value=default_lon, format="%.6f")
