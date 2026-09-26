@@ -1,0 +1,31 @@
+hospital_id,name,type,current,pred_30min,pred_60min,trend,mae_30min
+1,Aasav Hospital,private,21,25,22,🟢 FREEING UP,3.0
+2,Trome Multi Speciality Hospital,private,22,17,16,⚠️ FILLING FAST,2.84
+3,Prashant Memorial Charitable Hospital,private,35,29,29,⚠️ FILLING FAST,4.06
+4,Muzaffarpur Royal Hospital,private,17,13,14,⚠️ FILLING FAST,1.97
+5,I.T. Memorial Hospital,private,14,19,18,🟢 FREEING UP,2.84
+6,Sadar Hospital,govt,18,16,15,⚠️ FILLING FAST,5.96
+7,Phular Superspeciality Hospital,private,21,15,16,⚠️ FILLING FAST,2.38
+8,Shree Krishna Medical College and Hospital (SKMCH),govt,75,41,40,⚠️ FILLING FAST,18.47
+9,RBM Hospital,private,21,17,17,⚠️ FILLING FAST,2.55
+10,Apex Children's Hospital,private,13,12,12,STABLE,1.83
+11,Government Railway Hospital,govt,3,2,2,STABLE,0.95
+12,Homi Bhabha Cancer Hospital & Research Center,govt,10,9,11,STABLE,4.84
+13,District Health Society Muzaffarpur,govt,0,0,0,STABLE,0.0
+14,Glocal Hospital,private,12,14,13,🟢 FREEING UP,2.03
+15,Cancer Hospital Muzaffarpur,govt,2,6,5,🟢 FREEING UP,3.01
+16,The Leprosy Mission Hospital,private,13,10,10,⚠️ FILLING FAST,1.64
+17,New Manas Multi Speciality Hospital,private,12,14,14,🟢 FREEING UP,2.16
+18,JBS Emergency Hospital,private,10,9,8,STABLE,1.3
+19,Daylight Hospital & Research Centre,private,9,12,12,🟢 FREEING UP,1.78
+20,Maa Janki Hospital & Research Centre,private,10,15,14,🟢 FREEING UP,2.17
+21,Jay Prabha Medanta Super Specialty Hospital,private,82,102,105,🟢 FREEING UP,16.92
+22,BIG Apollo Spectra Hospital,private,19,27,28,🟢 FREEING UP,4.74
+23,Paras HMRI Hospital,private,55,57,54,🟢 FREEING UP,7.51
+24,Ford Hospital and Research Center,private,41,34,35,⚠️ FILLING FAST,4.77
+25,Mediversal Multi Super Specialty Hospital,private,32,32,34,STABLE,4.86
+26,SN Sarraf Hospital,private,34,28,28,⚠️ FILLING FAST,3.98
+27,Matrika Fertility Heritage Hospital,private,9,10,11,STABLE,1.66
+28,CARE Kilkari Hospital & IVF Centre,private,7,14,12,🟢 FREEING UP,1.64
+29,Paras Global Hospital Darbhanga,private,46,44,44,⚠️ FILLING FAST,6.27
+30,Aditi Nursing Home and Hospital,private,9,8,9,STABLE,1.66

@@ -1,0 +1,31 @@
+hospital_id,name,lat,lon,type,phone,specialties,total_beds,total_icu,total_vaccine_slots
+1,Aasav Hospital,26.128127,85.374932,private,+91 89888 88363,general,60,6,20
+2,Trome Multi Speciality Hospital,26.121416,85.364664,private,+91 89691 21333,dialysis,50,5,15
+3,Prashant Memorial Charitable Hospital,26.129399,85.373524,private,+91 97714 23635,emergency general urology,80,8,25
+4,Muzaffarpur Royal Hospital,26.091269,85.389865,private,+91 96088 31842,general emergency,40,4,15
+5,I.T. Memorial Hospital,26.171977,85.392073,private,+91 93345 00482,multi-speciality,55,5,18
+6,Sadar Hospital,26.122115,85.382366,govt,,general emergency,120,10,50
+7,Phular Superspeciality Hospital,26.129085,85.375494,private,+91 621 227 1151,maternity pediatric,45,4,15
+8,Shree Krishna Medical College and Hospital (SKMCH),26.166921,85.393457,govt,,general icu ccu dengue superspeciality,400,40,100
+9,RBM Hospital,26.130275,85.368331,private,+91 95087 71161,nicu emergency,50,6,15
+10,Apex Children's Hospital,26.128058,85.373630,private,+91 96086 67249,pediatric nicu,35,4,10
+11,Government Railway Hospital,26.130957,85.363620,govt,,general,20,2,10
+12,Homi Bhabha Cancer Hospital & Research Center,26.165852,85.396880,govt,,cancer oncology,100,10,0
+13,District Health Society Muzaffarpur,26.122402,85.382881,govt,,admin-coordination,0,0,0
+14,Glocal Hospital,26.149759,85.342994,private,+91 73209 23709,general,40,4,15
+15,Cancer Hospital Muzaffarpur,26.166128,85.396077,govt,,cancer,60,6,0
+16,The Leprosy Mission Hospital,26.106900,85.418917,private,+91 621 228 3738,skin eye leprosy,30,2,10
+17,New Manas Multi Speciality Hospital,26.130183,85.368837,private,+91 82103 58323,surgery dental emergency,40,4,15
+18,JBS Emergency Hospital,26.170378,85.399363,private,,emergency,25,3,10
+19,Daylight Hospital & Research Centre,26.111874,85.404109,private,+91 70544 76632,multi-speciality,35,4,12
+20,Maa Janki Hospital & Research Centre,26.145809,85.359532,private,+91 82073 88845,general icu,45,5,15
+21,Jay Prabha Medanta Super Specialty Hospital,25.599475,85.152740,private,+91 612 350 5050,multi-speciality neurosciences,300,30,60
+22,BIG Apollo Spectra Hospital,25.587807,85.195930,private,+91 612 354 0100,ortho general,80,8,25
+23,Paras HMRI Hospital,25.605646,85.082587,private,+91 78350 84931,general emergency liver-transplant,150,15,40
+24,Ford Hospital and Research Center,25.584499,85.163077,private,+91 97982 15884,ortho dialysis general,100,10,30
+25,Mediversal Multi Super Specialty Hospital,25.597732,85.157467,private,+91 612 350 0011,icu general,90,10,25
+26,SN Sarraf Hospital,26.132810,85.897252,private,+91 72095 67555,multi-speciality orthopaedic trauma,80,8,25
+27,Matrika Fertility Heritage Hospital,26.129408,85.910042,private,+91 91621 15639,maternity gynae,30,2,10
+28,CARE Kilkari Hospital & IVF Centre,26.140936,85.908285,private,+91 81780 00477,maternity child ivf,35,3,12
+29,Paras Global Hospital Darbhanga,26.136420,85.908317,private,+91 78350 84933,general emergency multi-speciality,120,12,35
+30,Aditi Nursing Home and Hospital,26.126007,85.895629,private,+91 97090 04632,maternity gynae,25,2,10
