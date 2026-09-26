@@ -51,11 +51,26 @@ city_choice = st.sidebar.selectbox("Quick location preset", list(CITY_PRESETS.ke
 
 if CITY_PRESETS[city_choice] is not None:
     default_lat, default_lon = CITY_PRESETS[city_choice]
+    patient_lat = st.sidebar.number_input("Latitude", value=default_lat, format="%.6f")
+    patient_lon = st.sidebar.number_input("Longitude", value=default_lon, format="%.6f")
 else:
+    custom_address = st.sidebar.text_input("Enter your address/city", placeholder="e.g. Gandhi Maidan, Patna")
     default_lat, default_lon = 26.1225, 85.3906
-
-patient_lat = st.sidebar.number_input("Latitude", value=default_lat, format="%.6f")
-patient_lon = st.sidebar.number_input("Longitude", value=default_lon, format="%.6f")
+    if custom_address:
+        try:
+            from geopy.geocoders import Nominatim
+            geolocator = Nominatim(user_agent="bihar_arogya_setu")
+            location = geolocator.geocode(custom_address)
+            if location:
+                default_lat, default_lon = location.latitude, location.longitude
+                st.sidebar.success("Found location!")
+            else:
+                st.sidebar.error("Location not found. Please try again.")
+        except Exception:
+            st.sidebar.error("Error finding location.")
+    
+    patient_lat = st.sidebar.number_input("Latitude", value=default_lat, format="%.6f")
+    patient_lon = st.sidebar.number_input("Longitude", value=default_lon, format="%.6f")
 
 resource = st.sidebar.selectbox(
     "What does the patient need?",
@@ -63,10 +78,15 @@ resource = st.sidebar.selectbox(
     format_func=lambda x: {"bed": "General Bed", "icu": "ICU Bed", "vaccine": "Vaccine Slot"}[x],
 )
 
-specialty = st.sidebar.text_input(
-    "Specialty needed (optional)",
-    placeholder="e.g. pediatric, cardiac, maternity, trauma",
-)
+SPECIALTIES_LIST = [
+    "None (Any)", "admin-coordination", "cancer", "ccu", "child", "dengue", "dental",
+    "dialysis", "emergency", "eye", "general", "gynae", "icu", "ivf", "leprosy",
+    "liver-transplant", "maternity", "multi-speciality", "neurosciences", "nicu",
+    "oncology", "ortho", "orthopaedic", "pediatric", "skin", "superspeciality",
+    "surgery", "trauma", "urology"
+]
+specialty_choice = st.sidebar.selectbox("Specialty needed (optional)", SPECIALTIES_LIST)
+specialty = "" if specialty_choice == "None (Any)" else specialty_choice
 
 st.sidebar.subheader("What's most important to you?")
 st.sidebar.caption("Rate each factor's importance from 0 (Don't care) to 100 (Very important).")
