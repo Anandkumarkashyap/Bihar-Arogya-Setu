@@ -26,9 +26,9 @@ from admin_update import (
     update_availability as write_availability_update,
 )
 
-st.set_page_config(page_title="Bihar Hospital Finder", layout="wide")
+st.set_page_config(page_title="Bihar Arogya Setu", layout="wide")
 
-st.title("🏥 Bihar Hospital Bed & Vaccine Availability Finder")
+st.title("🏥 Bihar Arogya Setu")
 st.caption(
     "A decision-support prototype for emergency hospital referral — "
     "covering Muzaffarpur, Patna, and Darbhanga. "
