@@ -58,18 +58,21 @@ else:
     default_lat, default_lon = 26.1225, 85.3906
     if custom_address:
         try:
-            from geopy.geocoders import Nominatim
-            geolocator = Nominatim(user_agent="bihar_arogya_setu", timeout=10)
+            from geopy.geocoders import ArcGIS, Nominatim
             
             search_query = custom_address
             if "bihar" not in custom_address.lower():
                 search_query = f"{custom_address}, Bihar, India"
                 
-            location = geolocator.geocode(search_query)
+            arcgis = ArcGIS(timeout=10)
+            location = arcgis.geocode(search_query)
             
-            # Fallback if the strict 'Bihar, India' addition fails
             if not location:
-                location = geolocator.geocode(custom_address)
+                location = arcgis.geocode(custom_address)
+                
+            if not location:
+                nom = Nominatim(user_agent="bihar_arogya_setu", timeout=10)
+                location = nom.geocode(search_query) or nom.geocode(custom_address)
                 
             if location:
                 default_lat, default_lon = location.latitude, location.longitude
