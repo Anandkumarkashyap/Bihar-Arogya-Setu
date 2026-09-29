@@ -38,7 +38,8 @@ def create_tables(conn):
             specialties TEXT,
             total_beds INTEGER,
             total_icu INTEGER,
-            total_vaccine_slots INTEGER
+            total_vaccine_slots INTEGER,
+            city TEXT
         )
     """)
 
@@ -95,28 +96,34 @@ def seed_current_availability(conn):
     try:
         sim_df = pd.read_csv(AVAILABILITY_CSV, parse_dates=["timestamp"])
         latest = sim_df.sort_values("timestamp").groupby("hospital_id").tail(1)
+        latest = latest.set_index("hospital_id")
     except FileNotFoundError:
-        # No simulated data available -- just start hospitals at full capacity
-        hospitals_df = pd.read_csv(HOSPITALS_CSV)
-        latest = pd.DataFrame({
-            "hospital_id": hospitals_df["hospital_id"],
-            "beds_available": hospitals_df["total_beds"],
-            "icu_available": hospitals_df["total_icu"],
-            "vaccine_slots_available": hospitals_df["total_vaccine_slots"],
-        })
+        latest = pd.DataFrame()
 
+    hospitals_df = pd.read_csv(HOSPITALS_CSV).set_index("hospital_id")
+    
     now = datetime.now().isoformat(timespec="seconds")
-    rows = [
-        (
-            int(r["hospital_id"]),
-            int(r["beds_available"]),
-            int(r["icu_available"]),
-            int(r["vaccine_slots_available"]),
+    rows = []
+    
+    for hosp_id, row in hospitals_df.iterrows():
+        if hosp_id in latest.index:
+            r = latest.loc[hosp_id]
+            beds = int(r["beds_available"])
+            icu = int(r["icu_available"])
+            vacc = int(r["vaccine_slots_available"])
+        else:
+            beds = int(row["total_beds"])
+            icu = int(row["total_icu"])
+            vacc = int(row["total_vaccine_slots"])
+            
+        rows.append((
+            int(hosp_id),
+            beds,
+            icu,
+            vacc,
             now,
             "system_seed",
-        )
-        for _, r in latest.iterrows()
-    ]
+        ))
 
     conn.executemany("""
         INSERT INTO availability_current

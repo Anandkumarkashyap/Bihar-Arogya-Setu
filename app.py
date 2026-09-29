@@ -1,7 +1,7 @@
 """
 app.py
 
-Streamlit dashboard: "Bihar Hospital Bed & Vaccine Finder"
+Streamlit dashboard: "Bihar Swasth Setu"
 
 Run with:
     streamlit run app.py
@@ -26,12 +26,12 @@ from admin_update import (
     update_availability as write_availability_update,
 )
 
-st.set_page_config(page_title="Bihar Arogya Setu", layout="wide")
+st.set_page_config(page_title="Bihar Swasth Setu", layout="wide")
 
-st.title("🏥 Bihar Arogya Setu")
+st.title("🏥 Bihar Swasth Setu")
 st.caption(
-    "A decision-support prototype for emergency hospital referral — "
-    "covering Muzaffarpur, Patna, and Darbhanga. "
+    "A decision-support prototype for emergency hospital referral, "
+    "covering multiple cities across Bihar. "
     "Availability is staff-updated where available, simulated otherwise — not official live hospital data."
 )
 
@@ -40,50 +40,57 @@ st.caption(
 # ---------------------------------------------------------------------------
 st.sidebar.header("Patient / Search Details")
 
-CITY_PRESETS = {
-    "Muzaffarpur (Railway Jn.)": (26.1225, 85.3906),
-    "Patna (Kankarbagh)": (25.5978, 85.1527),
-    "Darbhanga (Laheriasarai)": (26.1328, 85.8973),
-    "Custom (enter manually)": None,
-}
+try:
+    _hosp_for_presets = pd.read_csv("hospitals.csv")
+    available_districts = sorted(_hosp_for_presets["city"].dropna().unique().tolist())
+except FileNotFoundError:
+    available_districts = ["Patna", "Muzaffarpur", "Darbhanga"]
 
-city_choice = st.sidebar.selectbox("Quick location preset", list(CITY_PRESETS.keys()))
+selected_district = st.sidebar.selectbox("Select District", available_districts)
 
-if CITY_PRESETS[city_choice] is not None:
-    default_lat, default_lon = CITY_PRESETS[city_choice]
-    patient_lat = st.sidebar.number_input("Latitude", value=default_lat, format="%.6f")
-    patient_lon = st.sidebar.number_input("Longitude", value=default_lon, format="%.6f")
-else:
-    custom_address = st.sidebar.text_input("Enter your address/city", placeholder="e.g. Gandhi Maidan, Patna")
-    default_lat, default_lon = 26.1225, 85.3906
-    if custom_address:
-        try:
-            from geopy.geocoders import ArcGIS, Nominatim
+custom_address = st.sidebar.text_input(
+    "Enter your location (address/area)", 
+    placeholder=f"e.g. Bhamasah Dwar, {selected_district}"
+)
+
+default_lat, default_lon = 25.5941, 85.1376
+try:
+    if "_hosp_for_presets" in locals():
+        district_group = _hosp_for_presets[_hosp_for_presets["city"] == selected_district]
+        if not district_group.empty:
+            default_lat = round(district_group["lat"].mean(), 6)
+            default_lon = round(district_group["lon"].mean(), 6)
+except Exception:
+    pass
+
+if custom_address:
+    try:
+        from geopy.geocoders import ArcGIS, Nominatim
+        
+        search_query = custom_address
+        if "bihar" not in custom_address.lower() and selected_district.lower() not in custom_address.lower():
+            search_query = f"{custom_address}, {selected_district}, Bihar, India"
             
-            search_query = custom_address
-            if "bihar" not in custom_address.lower():
-                search_query = f"{custom_address}, Bihar, India"
-                
-            arcgis = ArcGIS(timeout=10)
-            location = arcgis.geocode(search_query)
+        arcgis = ArcGIS(timeout=10)
+        location = arcgis.geocode(search_query)
+        
+        if not location:
+            location = arcgis.geocode(custom_address)
             
-            if not location:
-                location = arcgis.geocode(custom_address)
-                
-            if not location:
-                nom = Nominatim(user_agent="bihar_arogya_setu", timeout=10)
-                location = nom.geocode(search_query) or nom.geocode(custom_address)
-                
-            if location:
-                default_lat, default_lon = location.latitude, location.longitude
-                st.sidebar.success(f"Found: {location.address.split(',')[0]}")
-            else:
-                st.sidebar.error("Location not found. Try adding a nearby town or district name.")
-        except Exception:
-            st.sidebar.error("Map service busy. Try adjusting Latitude/Longitude manually.")
-    
-    patient_lat = st.sidebar.number_input("Latitude", value=default_lat, format="%.6f")
-    patient_lon = st.sidebar.number_input("Longitude", value=default_lon, format="%.6f")
+        if not location:
+            nom = Nominatim(user_agent="bihar_swasth_setu", timeout=10)
+            location = nom.geocode(search_query) or nom.geocode(custom_address)
+            
+        if location:
+            default_lat, default_lon = location.latitude, location.longitude
+            st.sidebar.success(f"Found: {location.address.split(',')[0]}")
+        else:
+            st.sidebar.error("Location not found. Try adding a nearby landmark.")
+    except Exception:
+        st.sidebar.error("Map service busy. Try adjusting Latitude/Longitude manually.")
+        
+patient_lat = st.sidebar.number_input("Latitude", value=default_lat, format="%.6f")
+patient_lon = st.sidebar.number_input("Longitude", value=default_lon, format="%.6f")
 
 resource = st.sidebar.selectbox(
     "What does the patient need?",
@@ -91,13 +98,21 @@ resource = st.sidebar.selectbox(
     format_func=lambda x: {"bed": "General Bed", "icu": "ICU Bed", "vaccine": "Vaccine Slot"}[x],
 )
 
-SPECIALTIES_LIST = [
-    "None (Any)", "admin-coordination", "cancer", "ccu", "child", "dengue", "dental",
-    "dialysis", "emergency", "eye", "general", "gynae", "icu", "ivf", "leprosy",
-    "liver-transplant", "maternity", "multi-speciality", "neurosciences", "nicu",
-    "oncology", "ortho", "orthopaedic", "pediatric", "skin", "superspeciality",
-    "surgery", "trauma", "urology"
-]
+try:
+    if "_hosp_for_presets" not in locals():
+        _hosp_for_presets = pd.read_csv("hospitals.csv")
+    all_specs = set()
+    for specs in _hosp_for_presets["specialties"].dropna():
+        for s in specs.split():
+            all_specs.add(s.lower().strip())
+    SPECIALTIES_LIST = ["None (Any)"] + sorted(list(all_specs))
+except Exception:
+    SPECIALTIES_LIST = [
+        "None (Any)", "cardiac", "child", "dental", "dialysis", "emergency", "eye", 
+        "general", "gynae", "icu", "maternity", "multi-speciality", "orthopedic", 
+        "pediatric", "surgery", "trauma", "urology"
+    ]
+
 specialty_choice = st.sidebar.selectbox("Specialty needed (optional)", SPECIALTIES_LIST)
 specialty = "" if specialty_choice == "None (Any)" else specialty_choice
 
@@ -128,54 +143,55 @@ search_clicked = st.sidebar.button("🔍 Find Hospitals", type="primary", use_co
 # ---------------------------------------------------------------------------
 # Hidden staff access -- collapsed by default, no visible hint it unlocks
 # an update form. Patients browsing the page will not notice anything odd.
+# Each city has its OWN code, so a leaked code only exposes that city.
 # ---------------------------------------------------------------------------
 st.sidebar.divider()
 with st.sidebar.expander("⚙️ Staff Access"):
-    if "staff_unlocked" not in st.session_state:
-        st.session_state["staff_unlocked"] = False
-        st.session_state["staff_hospital_id"] = None
-        st.session_state["staff_hospital_name"] = None
+    if "staff_unlocked_city" not in st.session_state:
+        st.session_state["staff_unlocked_city"] = None
 
-    if not st.session_state["staff_unlocked"]:
-        hospitals_df = load_all_hospitals()
-        selected_hospital_name = st.selectbox(
-            "Select your hospital", hospitals_df["name"].tolist(), key="login_hospital_select"
+    if st.session_state["staff_unlocked_city"] is None:
+        staff_city_choice = st.selectbox(
+            "Your city", available_districts, key="staff_city_select"
         )
         entered_code = st.text_input("Access code", type="password", key="staff_code_input")
         if st.button("Unlock", key="staff_unlock_btn"):
-            correct_code = st.secrets.get("staff_access_code", None)
-            if correct_code is not None and entered_code == correct_code:
-                st.session_state["staff_unlocked"] = True
-                st.session_state["staff_hospital_name"] = selected_hospital_name
-                row = hospitals_df[hospitals_df["name"] == selected_hospital_name].iloc[0]
-                st.session_state["staff_hospital_id"] = int(row["hospital_id"])
+            # Check for city-specific codes first, then fallback to the global master code
+            city_codes = st.secrets.get("staff_access_codes", {})
+            correct_code = city_codes.get(staff_city_choice)
+            master_code = st.secrets.get("staff_access_code", None)
+            
+            if entered_code == correct_code or (master_code is not None and entered_code == master_code):
+                st.session_state["staff_unlocked_city"] = staff_city_choice
                 st.rerun()
             else:
-                st.error("Incorrect code.")
+                st.error("Incorrect code for that city.")
     else:
-        st.success(f"Unlocked for: {st.session_state['staff_hospital_name']}")
+        unlocked_city = st.session_state["staff_unlocked_city"]
+        st.success(f"Staff mode unlocked for **{unlocked_city}** this session.")
         if st.button("Lock again", key="staff_lock_btn"):
-            st.session_state["staff_unlocked"] = False
-            st.session_state["staff_hospital_id"] = None
-            st.session_state["staff_hospital_name"] = None
+            st.session_state["staff_unlocked_city"] = None
             st.rerun()
 
 # ---------------------------------------------------------------------------
 # STAFF PANEL -- only rendered if this session has unlocked it
 # ---------------------------------------------------------------------------
-if st.session_state.get("staff_unlocked", False):
-    st.header("🔧 Staff Panel — Update Hospital Availability")
+if st.session_state.get("staff_unlocked_city") is not None:
+    unlocked_city = st.session_state["staff_unlocked_city"]
+    st.header(f"🔧 Staff Panel — Update Availability ({unlocked_city})")
     st.caption(
-        "This section is only visible after entering the correct staff access code. "
-        "Patients never see this panel."
+        "This section is only visible after entering the correct staff access code for your city. "
+        "Patients never see this panel, and you can only edit hospitals in your own city."
     )
 
     hospitals_df = load_all_hospitals()
-    staff_hospital_id = st.session_state["staff_hospital_id"]
-    staff_hospital_name = st.session_state["staff_hospital_name"]
-    staff_hospital_row = hospitals_df[hospitals_df["hospital_id"] == staff_hospital_id].iloc[0]
-    
-    st.subheader(f"Updating: {staff_hospital_name}")
+    hospitals_df = hospitals_df[hospitals_df["city"] == unlocked_city]
+
+    staff_hospital_name = st.selectbox(
+        "Select your hospital", hospitals_df["name"].tolist(), key="staff_hospital_select"
+    )
+    staff_hospital_row = hospitals_df[hospitals_df["name"] == staff_hospital_name].iloc[0]
+    staff_hospital_id = int(staff_hospital_row["hospital_id"])
 
     current = load_current_availability(staff_hospital_id)
 
@@ -369,21 +385,3 @@ if search_clicked or "last_results" in st.session_state:
                         st.markdown(f"{i+1}. {instruction.capitalize()} (drive {distance:.0f}m)")
 else:
     st.info("Set the patient's location and needs in the sidebar, then click **Find Hospitals**.")
-
-# ---------------------------------------------------------------------------
-# Footer: dataset snapshot
-# ---------------------------------------------------------------------------
-with st.expander("ℹ️ About this dataset"):
-    st.markdown(
-        """
-        - **Hospitals**: 30 real hospitals across Muzaffarpur, Patna, and Darbhanga
-          (names, coordinates from public listings).
-        - **Capacity figures** (total beds/ICU/vaccine slots): estimated, not
-          officially verified — placeholder values for demo purposes.
-        - **Availability data**: fully simulated with realistic day/night,
-          weekday/weekend, and random "shock event" patterns — not live data.
-        - This is a fresher/portfolio project inspired by real government
-          announcements about hospital bed-availability portals, not an
-          official government tool.
-        """
-    )

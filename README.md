@@ -1,4 +1,4 @@
-# 🏥 Bihar Arogya Setu
+# 🏥 Bihar Swasth Setu
 
 **A real-time hospital bed & vaccine availability finder for Bihar** — helping patients and families quickly locate available beds, ICU slots, or vaccine appointments during emergencies.
 

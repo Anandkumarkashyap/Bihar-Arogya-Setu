@@ -1,31 +1,202 @@
-hospital_id,name,lat,lon,type,phone,specialties,total_beds,total_icu,total_vaccine_slots
-1,Aasav Hospital,26.128127,85.374932,private,+91 89888 88363,general,60,6,20
-2,Trome Multi Speciality Hospital,26.121416,85.364664,private,+91 89691 21333,dialysis,50,5,15
-3,Prashant Memorial Charitable Hospital,26.129399,85.373524,private,+91 97714 23635,emergency general urology,80,8,25
-4,Muzaffarpur Royal Hospital,26.091269,85.389865,private,+91 96088 31842,general emergency,40,4,15
-5,I.T. Memorial Hospital,26.171977,85.392073,private,+91 93345 00482,multi-speciality,55,5,18
-6,Sadar Hospital,26.122115,85.382366,govt,,general emergency,120,10,50
-7,Phular Superspeciality Hospital,26.129085,85.375494,private,+91 621 227 1151,maternity pediatric,45,4,15
-8,Shree Krishna Medical College and Hospital (SKMCH),26.166921,85.393457,govt,,general icu ccu dengue superspeciality,400,40,100
-9,RBM Hospital,26.130275,85.368331,private,+91 95087 71161,nicu emergency,50,6,15
-10,Apex Children's Hospital,26.128058,85.373630,private,+91 96086 67249,pediatric nicu,35,4,10
-11,Government Railway Hospital,26.130957,85.363620,govt,,general,20,2,10
-12,Homi Bhabha Cancer Hospital & Research Center,26.165852,85.396880,govt,,cancer oncology,100,10,0
-13,District Health Society Muzaffarpur,26.122402,85.382881,govt,,admin-coordination,0,0,0
-14,Glocal Hospital,26.149759,85.342994,private,+91 73209 23709,general,40,4,15
-15,Cancer Hospital Muzaffarpur,26.166128,85.396077,govt,,cancer,60,6,0
-16,The Leprosy Mission Hospital,26.106900,85.418917,private,+91 621 228 3738,skin eye leprosy,30,2,10
-17,New Manas Multi Speciality Hospital,26.130183,85.368837,private,+91 82103 58323,surgery dental emergency,40,4,15
-18,JBS Emergency Hospital,26.170378,85.399363,private,,emergency,25,3,10
-19,Daylight Hospital & Research Centre,26.111874,85.404109,private,+91 70544 76632,multi-speciality,35,4,12
-20,Maa Janki Hospital & Research Centre,26.145809,85.359532,private,+91 82073 88845,general icu,45,5,15
-21,Jay Prabha Medanta Super Specialty Hospital,25.599475,85.152740,private,+91 612 350 5050,multi-speciality neurosciences,300,30,60
-22,BIG Apollo Spectra Hospital,25.587807,85.195930,private,+91 612 354 0100,ortho general,80,8,25
-23,Paras HMRI Hospital,25.605646,85.082587,private,+91 78350 84931,general emergency liver-transplant,150,15,40
-24,Ford Hospital and Research Center,25.584499,85.163077,private,+91 97982 15884,ortho dialysis general,100,10,30
-25,Mediversal Multi Super Specialty Hospital,25.597732,85.157467,private,+91 612 350 0011,icu general,90,10,25
-26,SN Sarraf Hospital,26.132810,85.897252,private,+91 72095 67555,multi-speciality orthopaedic trauma,80,8,25
-27,Matrika Fertility Heritage Hospital,26.129408,85.910042,private,+91 91621 15639,maternity gynae,30,2,10
-28,CARE Kilkari Hospital & IVF Centre,26.140936,85.908285,private,+91 81780 00477,maternity child ivf,35,3,12
-29,Paras Global Hospital Darbhanga,26.136420,85.908317,private,+91 78350 84933,general emergency multi-speciality,120,12,35
-30,Aditi Nursing Home and Hospital,26.126007,85.895629,private,+91 97090 04632,maternity gynae,25,2,10
+hospital_id,name,lat,lon,type,phone,specialties,total_beds,total_icu,total_vaccine_slots,city
+1,Aasav Hospital,26.128127,85.374932,private,+91 89888 88363,general,60,6,20,Muzaffarpur
+2,Trome Multi Speciality Hospital,26.121416,85.364664,private,+91 89691 21333,dialysis,50,5,15,Muzaffarpur
+3,Prashant Memorial Charitable Hospital,26.129399,85.373524,private,+91 97714 23635,emergency general urology,80,8,25,Muzaffarpur
+4,Muzaffarpur Royal Hospital,26.091269,85.389865,private,+91 96088 31842,general emergency,40,4,15,Muzaffarpur
+5,I.T. Memorial Hospital,26.171977,85.392073,private,+91 93345 00482,multi-speciality,55,5,18,Muzaffarpur
+6,Sadar Hospital,26.122115,85.382366,govt,,general emergency,120,10,50,Muzaffarpur
+7,Phular Superspeciality Hospital,26.129085,85.375494,private,+91 621 227 1151,maternity pediatric,45,4,15,Muzaffarpur
+8,Shree Krishna Medical College and Hospital (SKMCH),26.166921,85.393457,govt,,general icu ccu dengue superspeciality,400,40,100,Muzaffarpur
+9,RBM Hospital,26.130275,85.368331,private,+91 95087 71161,nicu emergency,50,6,15,Muzaffarpur
+10,Apex Children's Hospital,26.128058,85.37363,private,+91 96086 67249,pediatric nicu,35,4,10,Muzaffarpur
+11,Government Railway Hospital,26.130957,85.36362,govt,,general,20,2,10,Muzaffarpur
+12,Homi Bhabha Cancer Hospital & Research Center,26.165852,85.39688,govt,,cancer oncology,100,10,0,Muzaffarpur
+13,District Health Society Muzaffarpur,26.122402,85.382881,govt,,admin-coordination,0,0,0,Muzaffarpur
+14,Glocal Hospital,26.149759,85.342994,private,+91 73209 23709,general,40,4,15,Muzaffarpur
+15,Cancer Hospital Muzaffarpur,26.166128,85.396077,govt,,cancer,60,6,0,Muzaffarpur
+16,The Leprosy Mission Hospital,26.1069,85.418917,private,+91 621 228 3738,skin eye leprosy,30,2,10,Muzaffarpur
+17,New Manas Multi Speciality Hospital,26.130183,85.368837,private,+91 82103 58323,surgery dental emergency,40,4,15,Muzaffarpur
+18,JBS Emergency Hospital,26.170378,85.399363,private,,emergency,25,3,10,Muzaffarpur
+19,Daylight Hospital & Research Centre,26.111874,85.404109,private,+91 70544 76632,multi-speciality,35,4,12,Muzaffarpur
+20,Maa Janki Hospital & Research Centre,26.145809,85.359532,private,+91 82073 88845,general icu,45,5,15,Muzaffarpur
+21,Jay Prabha Medanta Super Specialty Hospital,25.599475,85.15274,private,+91 612 350 5050,multi-speciality neurosciences,300,30,60,Patna
+22,BIG Apollo Spectra Hospital,25.587807,85.19593,private,+91 612 354 0100,ortho general,80,8,25,Patna
+23,Paras HMRI Hospital,25.605646,85.082587,private,+91 78350 84931,general emergency liver-transplant,150,15,40,Patna
+24,Ford Hospital and Research Center,25.584499,85.163077,private,+91 97982 15884,ortho dialysis general,100,10,30,Patna
+25,Mediversal Multi Super Specialty Hospital,25.597732,85.157467,private,+91 612 350 0011,icu general,90,10,25,Patna
+26,SN Sarraf Hospital,26.13281,85.897252,private,+91 72095 67555,multi-speciality orthopaedic trauma,80,8,25,Darbhanga
+27,Matrika Fertility Heritage Hospital,26.129408,85.910042,private,+91 91621 15639,maternity gynae,30,2,10,Darbhanga
+28,CARE Kilkari Hospital & IVF Centre,26.140936,85.908285,private,+91 81780 00477,maternity child ivf,35,3,12,Darbhanga
+29,Paras Global Hospital Darbhanga,26.13642,85.908317,private,+91 78350 84933,general emergency multi-speciality,120,12,35,Darbhanga
+30,Aditi Nursing Home and Hospital,26.126007,85.895629,private,+91 97090 04632,maternity gynae,25,2,10,Darbhanga
+31,SNM Medica Multi Speciality Hospital,24.795655,84.982421,private,+91 62009 89651,general surgery emergency,70,3,10,Gaya
+32,Arsh Superspeciality Hospital,24.788271,84.987493,private,+91 96619 13710,multi-speciality general,77,5,17,Gaya
+33,Shubhkamna Heart Hospital & Maternity Centre,24.787289,84.984103,private,+91 96314 40222,cardiac maternity,44,4,13,Gaya
+34,Prakash Multispeciality Hospital,24.783388,84.990999,private,+91 85279 18534,urology ortho general,73,8,12,Gaya
+35,Vaishnavi Multispecialty Hospital,24.803933,85.012841,private,+91 76671 35556,trauma icu general,67,6,11,Gaya
+36,Medifort Wellness Hospital,25.253261,87.000929,private,+91 89359 66820,cardiac general,31,3,16,Bhagalpur
+37,Pulse Hospital,25.25702,87.007003,private,+91 99311 46526,general diabetes maternity,44,7,10,Bhagalpur
+38,KK Nursing Home & Research Centre,25.251842,86.999624,private,+91 99399 44039,cardiac dialysis general,21,3,10,Bhagalpur
+39,Super Speciality Hospital (Govt),25.261497,87.013664,govt,,general govt,329,28,37,Bhagalpur
+40,Narayani Hospital,25.236541,87.013041,private,+91 93343 25070,multi-speciality general,58,7,18,Bhagalpur
+41,Harsh Hospital,25.785108,87.493242,private,+91 82520 09889,general ercp dental,30,4,23,Purnia
+42,Anand Hospital,25.779099,87.486218,private,+91 70705 50077,orthopedic general,51,5,14,Purnia
+43,Fatma Hospital,25.786107,87.501542,private,+91 90655 28676,icu general,43,5,13,Purnia
+44,Purnia Hospital & Research Centre,25.7861,87.497883,private,,general opd eye,35,6,13,Purnia
+45,Sadbhawna General Hospital,25.784534,87.499874,private,+91 73600 74100,general maternity,52,5,18,Purnia
+46,Kaushalya Samay Hospital,25.531746,84.643154,private,+91 70332 26976,multi-speciality general,32,8,24,Ara
+47,Medicon Hospital,25.560076,84.666942,private,+91 95727 37464,orthopedic general,64,3,22,Ara
+48,Bithal Hospital Pvt Ltd,25.574946,84.664195,private,+91 89864 78857,surgery emergency,35,7,19,Ara
+49,Dr T.P. Singh Trilok Hospital,25.537235,84.650493,private,+91 84093 16462,general scan,70,7,21,Ara
+50,Shivam Nursing Home,25.551589,84.65302,private,+91 77828 93037,general,21,3,5,Ara
+51,Top Medicare Hospital,25.421724,86.128201,private,+91 91352 33436,cardiac neurology icu,32,8,17,Begusarai
+52,Shivayu Superspeciality Eye Hospital,25.429003,86.130345,private,+91 77599 07033,eye ophthalmology,24,1,6,Begusarai
+53,Sahaj Sanjeevani Hospital,25.412898,86.143543,private,+91 82524 47750,dialysis surgery,36,6,18,Begusarai
+54,KDS Heart & Multi Speciality Hospital,25.406513,86.138407,private,+91 97090 58435,cardiac icu emergency dialysis,59,8,21,Begusarai
+55,Navlok Hospital,25.4227,86.128736,private,+91 70772 37777,general multi-speciality,40,5,21,Begusarai
+56,Sevayan Hospital,25.379502,86.476451,private,+91 92636 34707,general icu lab,43,8,18,Munger
+57,Maa Emergency Hospital,25.385872,86.482666,private,+91 90310 05991,emergency general,74,8,12,Munger
+58,Shishu Mangalam Hospital,25.378849,86.477068,private,+91 70048 03375,pediatric jaundice,68,8,15,Munger
+59,Laxmi Narayan Spine and Pain Hospital,25.369366,86.476443,private,,spine pain ortho,64,8,17,Munger
+60,Miracle Healthcare and IVF,25.368208,86.475237,private,,maternity ivf,40,6,22,Munger
+61,Samay Hospital,25.796735,84.75131,private,+91 92642 92240,multi-speciality general,47,8,17,Chhapra
+62,Meera Hospital,25.785408,84.720586,private,+91 77397 27077,dental orthopedic gynae ent,73,5,11,Chhapra
+63,Shri Sidhi Vinyak Maternity & Trauma Center,25.785104,84.720707,private,,maternity trauma,44,3,20,Chhapra
+64,L.B. Surgicare & Emergency Hospital,25.784501,84.726969,private,,surgery emergency,55,5,12,Chhapra
+65,Amrit Hospital,25.783692,84.722078,private,+91 6152 234 005,general,43,7,20,Chhapra
+66,Jalal Medical Center,26.648085,84.934289,private,+91 79790 38171,general,43,8,25,Motihari
+67,Sunrise Hospital,26.62478,84.915395,private,+91 97711 46222,general multi-speciality,55,8,24,Motihari
+68,Prabha Hospital,26.648035,84.903615,private,+91 96088 67260,gynae pediatric maternity,39,5,14,Motihari
+69,Vardaan Hospital,26.644235,84.908751,private,+91 6252 230 051,pediatric maternity,45,8,18,Motihari
+70,Astha Hospital,26.641348,84.900872,private,+91 74888 03554,general wellness,77,7,23,Motihari
+71,Nalanda Netralaya,25.198991,85.529626,private,+91 94728 57605,eye ophthalmology,27,2,6,Bihar Sharif
+72,Nobel Hospital,25.178561,85.508763,private,+91 96936 65941,icu general,38,7,25,Bihar Sharif
+73,Matritva Chhaya Hospital,25.23257,85.51969,private,+91 82268 97508,maternity general,35,3,13,Bihar Sharif
+74,Mamta Mother & Child Hospital,25.200218,85.517763,private,+91 99056 61890,maternity pediatric icu,39,8,15,Bihar Sharif
+75,Kumar Hospital (Dr. Indrajit Kumar),25.198388,85.529721,private,+91 99395 88832,liver general medicine,80,8,23,Bihar Sharif
+76,MARC Hospital,25.542628,87.578376,private,+91 89861 61196,surgical general,68,3,22,Katihar
+77,Katihar Medical College Hospital,25.583549,87.550462,govt,+91 6452 239 202,general medical-college ent,247,29,46,Katihar
+78,Satyabhama Netralaya,25.561276,87.556321,private,+91 62040 53656,eye ophthalmology,23,3,5,Katihar
+79,Medwin Multispeciality Hospital,25.535631,87.567796,private,+91 82104 23689,icu general,73,8,13,Katihar
+80,Radiant Hospital,25.533038,87.589279,private,+91 88001 88334,icu opd surgery cleft,73,7,18,Katihar
+81,Careford Republican Hospital,26.801722,84.517095,private,+91 82717 86978,neurology cardiology general,27,4,19,Bettiah
+82,First Choice Hospital - Neuro & Trauma Center,26.818677,84.49043,private,+91 82714 12300,neuro trauma icu,34,5,13,Bettiah
+83,Central Welfare Hospital,26.801463,84.513963,private,+91 94710 27035,general,67,7,20,Bettiah
+84,Tiwary Shyama Hospital,26.797615,84.494456,private,+91 95949 61766,laparoscopic surgery icu,31,5,17,Bettiah
+85,Aayesha Global Hospital,26.795664,84.497687,private,,general,56,6,8,Bettiah
+86,Sufia Memorial Hospital,26.228397,84.365551,private,+91 82351 61736,general surgery,57,5,17,Siwan
+87,Sri Sai Multispecialty Hospital,26.230432,84.36928,private,+91 92979 26660,orthopedic general,48,6,16,Siwan
+88,Rabiya Emergency Hospital,26.214793,84.365344,private,+91 82358 74302,nephrology emergency icu,52,5,10,Siwan
+89,Lakhichand Hospital,26.233692,84.372736,private,+91 77638 89888,critical-care anesthesia,28,2,9,Siwan
+90,Dr Rameshwar Kumar Orthopedic Hospital,26.226607,84.363538,private,+91 92979 26660,orthopedic,49,3,9,Siwan
+91,Saksham Hospital,26.458502,84.44823,private,+91 70500 61444,chest diabetes general,35,6,15,Gopalganj
+92,Galaxy Emergency Hospital,26.458143,84.447168,private,+91 62044 72130,emergency dialysis icu,33,5,17,Gopalganj
+93,Dr R.K. Thakur Hospital,26.457455,84.449258,private,+91 62079 95610,surgery general,57,4,17,Gopalganj
+94,Maya Hospital,26.459972,84.440794,private,+91 77810 33589,general,36,5,9,Gopalganj
+95,J.B. Hospital & Stone Clinic,26.459809,84.434215,private,+91 91626 69498,orthopedic urology,10,2,0,Gopalganj
+96,New B K Hospital,25.691465,85.206546,private,+91 90973 33335,surgery general,36,2,10,Hajipur
+97,Ganpati Hospital,25.691658,85.202815,private,+91 1800 843 2800,general,43,4,9,Hajipur
+98,Divisha Hospital,25.696244,85.213432,private,,maternity gynae,58,6,9,Hajipur
+99,Remedy Hospital Bihar,25.688692,85.206629,private,+91 94309 40787,emergency general,62,7,18,Hajipur
+100,Saran Multispeciality Hospital,25.6907,85.204566,private,+91 99311 03169,general,68,2,9,Hajipur
+101,Vachika The Medicity Multispeciality Hospital,25.841802,85.769208,private,+91 62019 96939,general surgery,64,5,20,Samastipur
+102,Krishna Hospital,25.852525,85.766431,private,+91 99349 79662,laparoscopic general,66,7,13,Samastipur
+103,Medicana Hospital,25.854858,85.776344,private,,gynae infertility general,46,6,18,Samastipur
+104,Mata Chandrakala Hospital,25.836103,85.762982,private,+91 70707 60095,orthopedic dental trauma,69,5,10,Samastipur
+105,Sanjeevani Hospital,25.852097,85.769793,private,+91 99310 51526,icu emergency general,33,2,20,Samastipur
+106,Adarsh Sukhsagar Hospital,26.587496,85.501583,private,+91 95708 02323,general,45,2,17,Sitamarhi
+107,Prashant Surgery Care Hospital,26.596126,85.498826,private,+91 83406 21473,surgery gynae,42,4,19,Sitamarhi
+108,Sitamarhi Aarogya Sansthan and Hospital,26.597454,85.509327,private,+91 77630 02069,surgery general,36,7,17,Sitamarhi
+109,Ramkali Memorial Hospital,26.595886,85.497881,private,+91 70503 15947,general,29,6,18,Sitamarhi
+110,AL Dhanwanti Hospital,26.593502,85.503868,private,+91 99395 54361,orthopedic,32,4,15,Sitamarhi
+111,Madhubani Pride Hospital,26.356636,86.06839,private,+91 98352 91658,general,48,7,14,Madhubani
+112,Ramshila Healthcare Hospital,26.219764,86.079626,private,+91 99053 30700,general,27,5,14,Madhubani
+113,Zemsford Hospital,26.359504,86.073305,private,+91 93158 46029,cardiology icu,63,2,13,Madhubani
+114,Genesis Hospital,26.217663,86.083945,private,+91 62024 40845,gynae ent pediatric ortho cardiology general,33,7,9,Madhubani
+115,RPS Global Hospital,26.249401,86.076656,private,+91 86033 23666,orthopedic icu,67,7,10,Madhubani
+116,Kaushik Hospital,25.873032,86.581119,private,+91 90310 05395,dermatology general,61,4,9,Saharsa
+117,Aarogya Mandir Hospital,25.883359,86.585195,private,+91 82924 80109,gynae maternity,69,6,14,Saharsa
+118,Sunrise Hospital Saharsa,25.876859,86.587847,private,+91 76548 23355,pediatric gynae emergency,53,6,8,Saharsa
+119,Jeevan Rakshak Hospital,25.873103,86.581695,private,+91 98704 94474,medicine general,34,2,9,Saharsa
+120,Satyabhama Hospital,25.887087,86.576316,private,+91 95342 22969,general,32,3,19,Saharsa
+121,Newlife Surgical Hospital,26.136202,87.455003,private,+91 91423 22312,surgery general,26,4,9,Araria
+122,AN Prime Hospital,26.130882,87.46704,private,+91 95725 16368,emergency general,70,6,15,Araria
+123,Tabassum Hospital,26.130633,87.46388,private,+91 70707 59616,gynae skincare,41,7,15,Araria
+124,Dr M A Rashid Memorial Polyclinic,26.132754,87.470986,private,,pediatric,15,1,0,Araria
+125,Dr Lal PathLabs Araria,26.149021,87.51329,private,+91 8071 371 949,diagnostics lab,10,0,5,Araria
+126,Vedanta Hospital,26.100109,87.947057,private,,general,38,7,14,Kishanganj
+127,NOVA Hospital and Trauma Centre,26.111111,87.93922,private,+91 70619 35282,trauma general,37,7,17,Kishanganj
+128,Sparsh Hospital,26.115852,87.929688,private,,gynae surgery,50,4,17,Kishanganj
+129,Radiant Multi Speciality Hospital,26.109266,87.942917,private,+91 6456 233 444,general icu,62,5,20,Kishanganj
+130,Shafin Super Speciality Hospital,26.108018,87.943033,private,+91 72600 67127,neuropsychiatry gastroenterology dermatology dental,233,21,41,Kishanganj
+131,Narayani Nursing Home,26.102878,86.57645,private,+91 85440 77669,multi-speciality surgery,46,6,16,Supaul
+132,Mithila Hospital,26.099716,86.581684,private,+91 94730 20700,general,27,3,14,Supaul
+133,Anant Prerana Hospital & Trauma Center,26.127205,86.609314,private,+91 86778 88827,trauma emergency general,34,4,8,Supaul
+134,Dr Ashok Verma Memorial Hospital,26.114328,86.597932,private,+91 82871 96517,general medicine,34,2,17,Supaul
+135,Dr Shravan Kumar Hospital,26.117484,86.598403,private,+91 88102 19719,general,20,2,10,Supaul
+136,Kripa Hospital,25.928716,86.787652,private,,gynae laparoscopic maternity,52,4,18,Madhepura
+137,Jannayak Karpoori Thakur Medical College and Hospital,25.960356,86.798869,govt,+91 81029 25093,general govt medical-college,246,24,42,Madhepura
+138,Gangotri Memorial Hospital,25.945485,86.794859,private,+91 93414 20655,urology,40,4,9,Madhepura
+139,Srijan Memorial Hospital,25.910906,86.786575,private,+91 87097 08408,diabetes general diagnostics,41,4,17,Madhepura
+140,Shyama Memorial Hospital,25.921049,86.799686,private,+91 90310 23297,general,30,2,16,Madhepura
+141,Lakshmi Hospital,24.890251,86.932378,private,+91 70048 48614,eye general,24,6,9,Banka
+142,Siddhi Vinayak Hospital,24.874569,86.921037,private,+91 80920 56920,general,37,4,9,Banka
+143,Dr Nilay Children Hospital,24.92261,86.223725,private,+91 73218 59277,pediatric,60,4,8,Jamui
+144,Khushi Emergency Hospital,24.926315,86.222354,private,+91 91137 26767,emergency general,42,5,9,Jamui
+145,Jamui Emergency Hospital,24.935383,86.22706,private,,emergency general,50,5,11,Jamui
+146,Dr Surya Nandan Singh Surgical Care Hospital,24.943187,86.231593,private,+91 87003 98401,surgery laparoscopic,32,3,12,Jamui
+147,Roshani Seva Sadan,24.933385,86.21867,private,+91 62023 43319,emergency general,35,2,8,Jamui
+148,Shree Radhe Hospital & Fertility Centre,25.196008,86.094784,private,+91 76311 32150,ivf gynae maternity,47,2,18,Lakhisarai
+149,Shri Vishnu Hospital,25.18079,86.093812,private,+91 91221 22197,emergency critical-care,41,4,15,Lakhisarai
+150,Mamta Emergency Hospital,25.191845,86.110364,private,+91 77650 63860,emergency general csection,60,5,17,Lakhisarai
+151,Nisha Emergency Hospital,25.143499,86.091194,private,+91 98520 58491,emergency general,54,3,11,Lakhisarai
+152,Ishwari Hospital,25.151475,86.093347,private,+91 62063 23799,gynae general,50,5,18,Lakhisarai
+153,Ranjan Memorial Hospital,25.149534,85.841924,private,+91 6341 223 900,general,42,6,8,Sheikhpura
+154,SRL Hospital,25.134061,85.857796,private,+91 96318 67108,general,37,3,8,Sheikhpura
+155,Sheikhpura Haddi and Ridh Hospital,25.146303,85.833229,private,+91 62027 23269,orthopedic,34,2,17,Sheikhpura
+156,Primary Health Centre Sheikhpura,25.139564,85.863389,govt,,general govt,19,1,15,Sheikhpura
+157,Doctors Divine Multispeciality Hospital,24.893536,85.545006,private,+91 87973 03540,laparoscopic maternity general,56,3,14,Nawada
+158,Dharamsheela Devi Multispeciality Hospital,24.9149,85.536433,private,+91 1800 532 1801,general multi-speciality,27,4,13,Nawada
+159,Medicare Gynae & Stone Hospital,24.888639,85.54601,private,+91 81025 65495,gynae urology general-surgery,27,3,17,Nawada
+160,Sanjeevan Hospital,24.890583,85.54792,private,+91 94312 70244,maternity general,23,5,8,Nawada
+161,Buddha Emergency Hospital,24.89391,85.532895,private,+91 84348 27530,orthopedic emergency,59,5,9,Nawada
+162,Prabhat Shashi Urology and Gynae Centre,24.750329,84.368217,private,+91 73660 63074,urology gynae maternity,29,3,18,Aurangabad
+163,Dr Devashree Multi Care Hospital,24.748892,84.365598,private,+91 99055 50354,medicine orthopedic general,20,6,18,Aurangabad
+164,SD Hospital (Trauma & Laparoscopy),24.745197,84.365303,private,+91 70911 94400,trauma laparoscopic,38,2,12,Aurangabad
+165,Dev Hospital,24.751486,84.360948,private,+91 72610 69600,general surgery,24,2,14,Aurangabad
+166,Matri Sadan Hospital,24.81259,84.632635,private,+91 99340 34989,maternity general,37,3,16,Aurangabad
+167,MedRec Hospital,25.231854,84.994932,private,+91 98018 79584,gynae general multi-speciality,60,3,8,Jehanabad
+168,RN Children Hospital,25.224257,84.99583,private,+91 77828 96410,pediatric vaccination,37,5,12,Jehanabad
+169,Pranavee Prime Care Hospital,25.221813,84.990313,private,+91 81145 89789,emergency trauma general,24,6,17,Jehanabad
+170,Maa Super Speciality Hospital,25.207339,84.984906,private,,general surgery,41,6,15,Jehanabad
+171,Maa Rajmani Hospital,25.208024,84.984673,private,,general,24,4,15,Jehanabad
+172,Samarpan Hospital,24.967882,84.011987,private,+91 70706 49239,pediatric nicu maternity,39,5,14,Sasaram
+173,Aarsh Multispecility Nursing Home,24.952141,84.012211,private,+91 90061 17060,general emergency,39,6,15,Sasaram
+174,Balkeshra Hospital,24.958785,84.015544,private,+91 91557 79999,general,24,4,12,Sasaram
+175,Geeva Hospital and Emergency Care,24.951461,83.989409,private,+91 91624 23583,emergency general,28,3,18,Sasaram
+176,Tara Neuro nd Gynae Hospital,24.952823,84.006881,private,+91 88251 40311,neuro gynae maternity,28,2,15,Sasaram
+177,Arvind Nursing Home,25.559987,83.975462,private,,pediatric general,23,4,12,Buxar
+178,City Hospital,25.579548,83.993026,private,+91 6183 359 844,medicine general,23,1,9,Buxar
+179,Alaknanda Hospital,25.563316,83.975119,private,+91 6183 315 811,gastro gynae laparoscopic,25,1,6,Buxar
+180,VK Global Hospital,25.578122,83.991019,private,+91 99348 91539,nephrology general,30,1,6,Buxar
+181,Maa Sharda Sanjeevani Hospital,25.567155,83.989841,private,+91 98719 29473,eye cardiac,24,1,9,Buxar
+182,Nectar Hospital,25.503064,86.480698,private,+91 6244 358 819,gynae neuro chest general,42,1,14,Khagaria
+183,Jeevan Care Hospital,25.507189,86.475276,private,+91 73679 68009,surgery laparoscopic urology,17,2,9,Khagaria
+184,Sri Narayan Multispeciality Hospital,25.510948,86.481643,private,+91 84049 94444,general,40,2,8,Khagaria
+185,Navdeep Hospital,25.506527,86.484289,private,,emergency general,42,4,6,Khagaria
+186,Shaheed Prabhunarayan Multi Speciality Hospital,25.503875,86.469068,private,,general,34,4,7,Khagaria
+187,Sadar Hospital Arwal,25.232128,84.677739,govt,+91 74885 40339,general govt orthopedic,104,5,21,Arwal
+188,Arwal Haddi Hospital,25.245705,84.663634,private,+91 91998 17041,orthopedic,20,3,9,Arwal
+189,Eskag Sanjeevani Diagnostic Center,25.233913,84.672757,private,+91 1800 102 2294,diagnostics ct-scan,10,0,0,Arwal
+190,Arwal Eye Hospital,25.237121,84.673404,private,,eye,39,3,6,Arwal
+191,Om Sai Hospital,25.235548,84.672372,private,+91 94305 12293,cardiac general,28,1,5,Arwal
+192,Sathvik Super Speciality Hospital,25.036712,83.600816,private,+91 79090 28231,general emergency,39,3,10,Bhabua
+193,Saraswati Devi Multispecialty Hospital,25.041078,83.593037,private,+91 89829 29227,general,40,4,13,Bhabua
+194,New Ashirwad Hospital,25.040295,83.607604,private,,general,36,5,15,Bhabua
+195,Dr Puja Clinic & Hospital,25.040248,83.607605,private,+91 96613 94811,general-physician surgery,38,5,15,Bhabua
+196,Vinod Shankar Hospital,25.040251,83.606882,private,,general-physician pediatric,23,5,15,Bhabua
+197,Jeevanya Healthcare,26.50891,85.303405,private,+91 72500 31501,general,16,4,10,Sheohar
+198,Matrika Healthcare,26.517597,85.296882,private,,gynae pediatric,44,2,10,Sheohar
+199,Gita Hospital,26.517918,85.297267,private,+91 89515 41546,general,19,1,8,Sheohar
+200,Shree Ram Ultrasound,26.514587,85.294231,private,,diagnostics,12,0,0,Sheohar
+201,KNS Multi Speciality Hospital,26.523273,85.299819,private,,general,37,5,11,Sheohar
