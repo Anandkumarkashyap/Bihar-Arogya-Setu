@@ -28,6 +28,25 @@ from admin_update import (
 
 st.set_page_config(page_title="Bihar Swasth Setu", layout="wide")
 
+# Add a subtle medical field background image on a dark theme
+st.markdown(
+    """
+    <style>
+    .stApp {
+        background: linear-gradient(rgba(10, 10, 15, 0.88), rgba(10, 10, 15, 0.88)), 
+                    url("https://images.unsplash.com/photo-1551076805-e1869033e561?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80");
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+    }
+    header[data-testid="stHeader"] {
+        background: rgba(10, 10, 15, 0.8) !important;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
 st.title("🏥 Bihar Swasth Setu")
 st.caption(
     "A decision-support prototype for emergency hospital referral, "
@@ -38,6 +57,10 @@ st.caption(
 # ---------------------------------------------------------------------------
 # Sidebar: inputs
 # ---------------------------------------------------------------------------
+st.sidebar.markdown(
+    '<img src="https://upload.wikimedia.org/wikipedia/commons/e/e9/Seal_of_Bihar.svg" width="100">', 
+    unsafe_allow_html=True
+)
 st.sidebar.header("Patient / Search Details")
 
 try:

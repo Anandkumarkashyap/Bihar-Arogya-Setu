@@ -1,0 +1,6 @@
+hospital_id,name,type,distance_km,available,total,specialty_match,trend,score,phone
+17,New Manas Multi Speciality Hospital,private,2.3346048865652835,12,40,1.0,🟢 FREEING UP,0.7507927018871614,+91 82103 58323
+3,Prashant Memorial Charitable Hospital,private,1.8694159626028817,35,80,1.0,⚠️ FILLING FAST,0.716825775759637,+91 97714 23635
+6,Sadar Hospital,govt,0.8231722724071812,18,120,1.0,⚠️ FILLING FAST,0.700429506441182,
+9,RBM Hospital,private,2.385376471196183,21,50,1.0,⚠️ FILLING FAST,0.694198050810842,+91 95087 71161
+4,Muzaffarpur Royal Hospital,private,3.4735041498872232,17,40,1.0,⚠️ FILLING FAST,0.6600366060623286,+91 96088 31842

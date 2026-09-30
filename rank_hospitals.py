@@ -179,9 +179,9 @@ def rank_hospitals(
         lambda r: haversine_km(patient_lat, patient_lon, r["lat"], r["lon"]), axis=1
     )
 
-    # Normalized sub-scores (0-1 range so weights are meaningful)
-    max_dist = merged["distance_km"].max() or 1.0
-    merged["distance_score"] = 1 - (merged["distance_km"] / max_dist)  # closer = higher
+    # Non-linear distance score: strictly prioritizes proximity regardless of dataset scale.
+    # 0km = 1.0, 10km = 0.5, 40km = 0.2. Prevents distant hospitals with high availability from taking over.
+    merged["distance_score"] = 1.0 / (1.0 + (merged["distance_km"] / 10.0))
     merged["availability_score"] = merged[avail_col] / merged[total_col].replace(0, np.nan)
     merged["availability_score"] = merged["availability_score"].fillna(0)
     merged["specialty_match"] = merged["specialties"].apply(
